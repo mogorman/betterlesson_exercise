@@ -14,9 +14,16 @@ export default function getTrainList() {
 		    dynamicTyping: true,
 		    skipEmptyLines: true,
 		    complete: function(results) {
-			//chectk for errors and throw them via a toast
-			console.log(results.data.length);
-			for( var i = 0; i < results.data.length; i++) {
+			console.log(results);
+			if(results.errors.length > 0) {
+			    for( var i = 0; i < results.errors.length; i++ ) {
+				alert('bad data from csv endpoint\n' + results.errors[i]['message'] + ' on row ' + results.errors[i]['row']);
+			    }
+			    //if csv is bad we aren't going to show anything and warn the user via an alert
+			    return;
+
+			}
+			for(i = 0; i < results.data.length; i++) {
 			    console.log("mog");
 			    var scheduled_time = results.data[i]['ScheduledTime '];
 			    var delay = results.data[i]['Lateness '] * 1000; //lateness is in seconds not ms

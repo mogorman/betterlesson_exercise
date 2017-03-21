@@ -32,8 +32,8 @@ export default function getTrainList() {
 }
 
 function getTrainListAsync(trains){
-  return {
-    type: GET_TRAIN_LIST,
-    payload: trains
-  };
+    return {
+	type: GET_TRAIN_LIST,
+	payload: trains
+    };
 }

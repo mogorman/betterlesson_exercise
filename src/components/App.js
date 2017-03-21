@@ -13,23 +13,25 @@ const train_columns = [{
 	{
 	    header: 'Scheduled Time',
 	    accessor: 'ScheduledTime ',
+	    //first value in array is the time+delay, so we take the second which is just the time.
 	    render: props => <span>{moment.utc(props.value[1]).format('MM/DD HH:mm:ss')}</span>
 	},
 	{
 	    header: 'Lateness',
 	    accessor: 'Lateness '
 	},{
-	    header: 'Destination',
-	    accessor: 'Destination '
-	},{
 	    header: 'Origin',
 	    accessor: 'Origin '
+	},{
+	    header: 'Destination',
+	    accessor: 'Destination '
 	},{
 	    header: 'Status',
 	    accessor: 'Status'
 	},{
 	    header: 'Time',
 	    accessor: 'TimeStamp ',
+	    //formatting times here so that we can still easily sort on them as unix timestamps
 	    render: props => <span>{moment.utc(props.value).format('MM/DD HH:mm:ss')}</span>
 	},{
 	    header: 'Track',
